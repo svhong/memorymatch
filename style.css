@@ -1,0 +1,122 @@
+body {
+    background-color: black;
+}
+/*----------------------------------------------------Title Header------------------------------------------------*/
+.bossHeader {
+    position: relative;
+    display: inline-block;
+    height: 23vh;
+    width: 100%;
+    background-color: #404040;
+}
+.gameLogo {
+    position: absolute;
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    top: 8%;
+}
+.gamePic {
+    height: 10vw;
+}
+
+.titleofHeader {
+    position: absolute;
+    display: inline-block;
+    background-color: #404040;
+    color: white;
+    right: 0%;
+    height: 10vw;
+}
+.titleofHeader > h1 {
+    font-size:5em;
+    margin: 0;
+    color: #ff3300;
+    text-shadow: 3px 3px 5px #109FD4;
+}
+
+.headerMenu {
+    display:inline-block;
+    position: relative;
+    left:65%;
+}
+.headerMenu > li {
+    display: inline-block;
+    list-style-type: none;
+    margin: 5px;
+    font-size: 1em;
+    color: #ff3300;
+    text-shadow: 3px 3px 5px #109FD4;
+}
+a:link, a:visited {
+    text-decoration: none;
+    color: #ff3300;
+    text-shadow: 3px 3px 5px #109FD4;
+}
+
+
+a:hover, a:visited {
+    text-decoration: none;
+    color: #ff3300;
+    text-shadow: 3px 3px 5px #109FD4;
+}
+
+/*------------------------------------------Stats Container-----------------------------------------------------*/
+.statsContainer {
+    color: #ff3300;
+    text-shadow: 3px 3px 5px #109FD4;
+    display: inline-block;
+    background-color: #404040;
+    float: left;
+    height: 97vh;
+    width: 15vw;
+    margin-top: 2vh;
+    margin-right: 2vh;
+}
+.statsContainer > div {
+    text-align: center;
+    margin: 1em;
+    padding: 0.25em;
+}
+.statsContainer > button {
+    position: relative;
+    left: 27%
+}
+/*------------------------------------------------------Game Area-------------------------------------------------*/
+#game-area {
+    position: absolute;
+    margin-top: 2vh;
+    height: 97vh;
+    width: 82%;
+    color: #ff3300;
+    display: inline-block;
+    background-color: gray;
+}
+.card {
+    display: inline-block;
+    position: relative;
+    width: 11%;
+    height: 13.5vw;
+    margin-top: 2em;
+    margin-left: 2em;
+    left: 5%;
+    top: 2%;
+}
+.front,.back{
+    position: absolute;
+}
+.front img{
+    width: 100%;
+    height: 13vw;
+}
+.back img {
+    width: 100%;
+
+}
+.gameOver {
+    font-size: 10em;
+    text-shadow: 3px 3px 5px #109FD4;
+    font-family: Arial, Georgia;
+    text-align: center;
+
+}

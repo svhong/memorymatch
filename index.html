@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Match Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+<!--***************************************Title and logo container**************************************************-->
+    <header class="bossHeader">
+        <div class="gameLogo">
+            <img class="gamePic" src="images/bttflogo.png" alt="Back To The Future">
+        </div>
+        <div class="titleofHeader">
+            <h1>memory match</h1>
+            <ul class="headerMenu">
+                <li>settings</li>
+                <li><a href="about.html">about me</a></li>
+            </ul>
+        </div>
+    </header>
+<!--************************************************Stats Container**************************************************-->
+    <section class="statsContainer">
+    <div class="matches">
+        <div class="label">matches</div>
+        <div class="value"></div>
+    </div>
+    <div class="games-played" >
+        <div class="label">games played</div>
+        <div class="value"></div>
+    </div>
+    <div class="attempts">
+        <div class="label">attempts</div>
+        <div class="value"></div>
+    </div>
+    <div class="accuracy">
+        <div class="label">accuracy</div>
+        <div class="value"></div>
+    </div>
+    <button class="reset">reset game</button>
+    </section>
+<!--*****************************************Game Area**********************************************************-->
+    <section id="game-area">
+        <div class="card">
+            <div class="front">
+                <img src="images/emmettbrown.jpg" alt="Emmett Brown">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/marty.jpg" alt="Marty Mcfly">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/george.jpg" alt="George Mcfly">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/timecircuit.jpg" alt="Time Circuit">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/delorean.jpg" alt="The Delorean">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/marty.jpg" alt="Marty Mcfly">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/george.jpg" alt="George Mcfly">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/biff.jpg" alt="Biff Tannen">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/fluxcapacitor.png" alt="Flux Capacitor">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/emmettbrown.jpg" alt="Emmett Brown">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/greatscott.jpg" alt="Great Scott">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/lorraine.jpg" alt="Lorraine Mcfly">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/delorean.jpg" alt="The Delorean">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/greatscott.jpg" alt="Great Scott">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/fluxcapacitor.png" alt="Flux Capacitor">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/biff.jpg" alt="Biff Tannen">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/timecircuit.jpg" alt="Time Circuit">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <img src="images/lorraine.jpg" alt="Lorraine Mcfly">
+            </div>
+            <div class="back">
+                <img src="images/cardback.jpg" alt="back of the card">
+            </div>
+        </div>
+    </section>
+</body>
+</html>

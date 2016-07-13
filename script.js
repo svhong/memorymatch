@@ -15,7 +15,8 @@ $(document).ready(function () {
     $('.card').on('click', card_clicked);
     games_played = 0;
     display_stats();
-    $('.reset').on('click', reset_stats).find('.card .back').show();
+    $('.reset').on('click', reset_stats);
+    $('.gameOver').hide();
 });
 function card_clicked() {
     /*---------------CARD WAS CLICKED----------------*/
@@ -43,7 +44,7 @@ function card_clicked() {
             clicked = false;
             display_stats();
             if (match_counter == total_possible_matches) {
-                $('#game-area').addClass('gameOver').text('You Win')
+                $('.gameOver').show();
             } else {
                 return;
             }
@@ -66,10 +67,10 @@ function display_stats(){
     $('.attempts .value').text(attempts);
     accuracy = (matches / attempts) * 100;
     if (matches == 0 && attempts == 0){
-        accuracy = 0 
+        accuracy = 0
     }
     $('.accuracy .value').text(accuracy.toFixed(2) + '%');
-   
+
     return;
 }
 /*------------RESET FUNCTION THAT RESETS ALL STATS----------------------*/
@@ -83,6 +84,7 @@ function reset_stats(){
     attempts = 0;
     games_played++;
     $('.card').find('.back').show();
+    $('.gameOver').hide();
     display_stats();
 }
 

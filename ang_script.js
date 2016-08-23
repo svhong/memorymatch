@@ -46,10 +46,11 @@ app.controller('cardController', function($timeout){
                     self.totalMatches++;
                     self.winArray.push(self.clickedArray[0],self.clickedArray[1]);
                     self.clickedArray = [];
-                }, 500);
-                if(self.cardArray == 0){
-                    console.log('You Win!')
-                }
+                    if(self.winArray.length === self.cardArray.length){
+                        console.log('YOU WIN');
+                        self.cardArray = [];
+                    }
+                }, 700);
             } else {
                 self.totalAttempts++;
                 console.log('they are not the same');
@@ -59,7 +60,7 @@ app.controller('cardController', function($timeout){
 
                     }
                     self.clickedArray = [];
-                }, 1500);
+                }, 1000);
             }
             self.getAccuracy();
         }
@@ -69,6 +70,12 @@ app.controller('cardController', function($timeout){
     };
     self.resetGame = function(){
         self.gamesPlayed++;
+        self.cardArray = [];
+        self.createRandomBoard();
+        self.clickedArray = [];
+        self.winArray = [];
+        self.totalAttempts = 0;
+        self.totalMatches = 0;
 
     }
 });

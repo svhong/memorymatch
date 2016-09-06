@@ -1,10 +1,11 @@
 var app = angular.module('angularMemory',[]);
 app.controller('cardController', function($timeout){
     var self = this;
-    var cardClicked = false;
     self.cardArray = [];
     self.clickedArray = [];
     self.winArray = [];
+    self.modalFlash = false;
+    self.blindUser = false;
     self.gamesPlayed = 1;
     self.totalMatches = 0;
     self.totalAttempts = 0;
@@ -31,7 +32,7 @@ app.controller('cardController', function($timeout){
         if(card.cardFlipped){
             return;
         }
-        self.clickedArray.push(card);
+        self.clickedArray.push(card); //does this kind of function
         if(self.clickedArray.length <= 2){
             card.cardFlipped = true;
         }
@@ -46,9 +47,18 @@ app.controller('cardController', function($timeout){
                     self.totalMatches++;
                     self.winArray.push(self.clickedArray[0],self.clickedArray[1]);
                     self.clickedArray = [];
-                    if(self.winArray.length === self.cardArray.length){
-                        console.log('YOU WIN');
+                    if(self.winArray.length === 2){
+                        // self.cardArray.length
+                        $('#winModal').modal('show');
+                        launch();
+                        self.blindUser = true;
+                        self.modalFlash = true;
+                        resetGif();
                         self.cardArray = [];
+                        $timeout(function(){
+                           closeModal();
+                           self.resetGame();
+                        },3900);
                     }
                 }, 700);
             } else {
@@ -57,7 +67,6 @@ app.controller('cardController', function($timeout){
                 $timeout(function(){
                     for(var i = 0; i < self.clickedArray.length; i++){
                         self.clickedArray[i].cardFlipped = false;
-
                     }
                     self.clickedArray = [];
                 }, 1000);
@@ -69,6 +78,7 @@ app.controller('cardController', function($timeout){
         self.accuracy = Math.floor((self.totalMatches/self.totalAttempts)*100) + '%';
     };
     self.resetGame = function(){
+        self.hideModal = true;
         self.gamesPlayed++;
         self.cardArray = [];
         self.createRandomBoard();
@@ -76,12 +86,16 @@ app.controller('cardController', function($timeout){
         self.winArray = [];
         self.totalAttempts = 0;
         self.totalMatches = 0;
+        resetGif();
+
 
     }
 });
 $(document).ready(function(){
     bgm();
+    audioClick();
 });
+
 function randomize(me){
     var temp = null;
     var i = 0;
@@ -97,4 +111,25 @@ function randomize(me){
 function bgm(){
     $('#bgm')[0].play();
 }
+function launch(){
+    $('#launch2')[0].play();
+}
+function audioClick(){
+    $('.audioDiv').on('click', '#mute',function(){
+        var $this = $(this);
+        $this.attr('id', 'unmute').removeClass('glyphicon-volume-off').addClass('glyphicon-volume-up');
+        $('#bgm')[0].muted = true;
+    }).on('click', '#unmute', function(){
+        var $this = $(this);
+        $this.attr('id', 'mute').removeClass('glyphicon-volume-up').addClass('glyphicon-volume-off');
+        $('#bgm')[0].muted = false;
+    });
+}
+function resetGif(){
+    $('#launch').attr('src', '');
+    $('#launch').attr('src', 'images/launch.gif');
+}
 
+function closeModal(){
+    $('#winModal').modal('hide');
+}

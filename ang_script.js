@@ -46,8 +46,7 @@ app.controller('cardController', function($timeout){
                     self.totalMatches++;
                     self.winArray.push(self.clickedArray[0],self.clickedArray[1]);
                     self.clickedArray = [];
-                    if(self.winArray.length === 2){
-                        // self.cardArray.length
+                    if(self.winArray.length === self.cardArray.length){
                         $('#winModal').modal('show');
                         launch();
                         resetGif();

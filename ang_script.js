@@ -38,7 +38,6 @@ app.controller('cardController', function($timeout){
         }
         if(self.clickedArray.length > 1) {
             if (self.clickedArray[0].url === self.clickedArray[1].url) {
-                console.log('its a match!');
                 $timeout(function(){
                     for (var i = 0; i < self.clickedArray.length; i++){
                         self.clickedArray[i].hideCard = true;
@@ -51,9 +50,9 @@ app.controller('cardController', function($timeout){
                         // self.cardArray.length
                         $('#winModal').modal('show');
                         launch();
+                        resetGif();
                         self.blindUser = true;
                         self.modalFlash = true;
-                        resetGif();
                         self.cardArray = [];
                         $timeout(function(){
                            closeModal();
@@ -63,7 +62,6 @@ app.controller('cardController', function($timeout){
                 }, 700);
             } else {
                 self.totalAttempts++;
-                console.log('they are not the same');
                 $timeout(function(){
                     for(var i = 0; i < self.clickedArray.length; i++){
                         self.clickedArray[i].cardFlipped = false;
@@ -86,9 +84,8 @@ app.controller('cardController', function($timeout){
         self.winArray = [];
         self.totalAttempts = 0;
         self.totalMatches = 0;
-        resetGif();
-
-
+        self.blindUser = false;
+        self.modalFlash = false;
     }
 });
 $(document).ready(function(){

@@ -19,7 +19,6 @@
     </div>
 </div>
 <div id="statsArea">
-    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#winModal" onclick="resetGif()">You Win!</button>
     <div class="games">Games Played <br> {{cc.gamesPlayed}}</div>
     <div class="matches">Total Matches: <br> {{cc.totalMatches}}</div>
     <div class="attempts">Attempts: <br> {{cc.totalAttempts}}</div>
@@ -55,12 +54,3 @@
 </div>
 </body>
 </html>
-
-<!--<div class="card" ng-repeat="card in cc.cardArray track by $index" ng-click="cc.cardClicked(card)" ng-class="{invis:card.hideCard, flip:card.flipCard}">-->
-<!--<div class="front">-->
-<!--<img ng-src="{{ card.url }}">-->
-<!--</div>-->
-<!--<div class="back">-->
-<!--<img ng-src="{{ card.back }}"  ng-hide="card.hideBack">-->
-<!--</div>-->
-<!--</div>-->

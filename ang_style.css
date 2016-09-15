@@ -17,6 +17,7 @@ body {
     left: 20%;
     height: 100%;
     width: 65%;
+    padding-top: 10px;
 }
 .card {
     display: inline-block;
@@ -152,12 +153,12 @@ body {
 /*-------------------------------------------------ANIMATIONS-------*/
 .animate{
     animation: modalflash;
-    animation-duration: 3.4s;
+    animation-duration: 5.2s;
 }
 
 @keyframes modalflash {
-    28%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
-    30%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
+    24%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
+    25%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
     32%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
     36%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
     40%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
@@ -166,10 +167,17 @@ body {
     46%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
     48%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
     50%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
+    51%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
+    52%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
+    53%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
+    55%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
     60%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
-    62%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
-    64%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
-    66%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
+    61%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
+    62%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
+    63%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
+    65%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
+    66%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
+    67%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
     68%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
     70%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
     72%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
@@ -178,12 +186,12 @@ body {
     80%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
     82%  {box-shadow: 0 0 30px 30px rgba(89,169,255,1);}
     84%  {box-shadow: 0 0 0 0 rgba(89,169,255,1);}
-    100% {box-shadow: 0 0 500px 500px rgba(89,169,255,1);}
+    100% {box-shadow: 0 0 250px 250px rgba(89,169,255,1);}
 }
 
 .blind {
     animation: bigFlash;
-    animation-duration: 3.4s;
+    animation-duration: 5.2s;
 }
 @keyframes bigFlash {
     28%  {opacity:1;}

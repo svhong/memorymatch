@@ -28,6 +28,10 @@
         <div class="glyphicon glyphicon-volume-off" id="mute"></div>
     </div>
     <button class="reset btn btn-danger" type="button" ng-click="cc.resetGame()">Reset Game</button>
+    <br>
+    <br>
+    <button class="reset btn btn-success" type="button" ng-click="cc.winCondition()">Demo</button>
+
 </div>
 <div class="modal fade" id="winModal">
     <div class="modal-dialog" role="document">
@@ -36,7 +40,7 @@
                 YOU WIN!
             </div>
             <div class="modal-body">
-                <img id="launch" src="images/launch.gif">
+                <video id="launch2" src="images/bttf_win.mp4"></video>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="cc.resetGame()">Close</button>
@@ -47,9 +51,6 @@
 <div>
     <audio id="bgm">
         <source src="images/bgm.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="launch2">
-        <source src="images/launch.mp3" type="audio/mpeg">
     </audio>
 </div>
 </body>

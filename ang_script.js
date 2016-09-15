@@ -32,7 +32,7 @@ app.controller('cardController', function($timeout){
         if(card.cardFlipped){
             return;
         }
-        self.clickedArray.push(card); //does this kind of function
+        self.clickedArray.push(card);
         if(self.clickedArray.length <= 2){
             card.cardFlipped = true;
         }
@@ -47,16 +47,7 @@ app.controller('cardController', function($timeout){
                     self.winArray.push(self.clickedArray[0],self.clickedArray[1]);
                     self.clickedArray = [];
                     if(self.winArray.length === self.cardArray.length){
-                        $('#winModal').modal('show');
-                        launch();
-                        resetGif();
-                        self.blindUser = true;
-                        self.modalFlash = true;
-                        self.cardArray = [];
-                        $timeout(function(){
-                           closeModal();
-                           self.resetGame();
-                        },3900);
+                        self.winCondition();
                     }
                 }, 700);
             } else {
@@ -70,6 +61,17 @@ app.controller('cardController', function($timeout){
             }
             self.getAccuracy();
         }
+    };
+    self.winCondition = function(){
+        launch();
+        $('#winModal').modal('show');
+        self.blindUser = true;
+        self.modalFlash = true;
+        self.cardArray = [];
+        $timeout(function(){
+            closeModal();
+            self.resetGame();
+        },8000);
     };
     self.getAccuracy = function(){
         self.accuracy = Math.floor((self.totalMatches/self.totalAttempts)*100) + '%';
@@ -91,7 +93,6 @@ $(document).ready(function(){
     bgm();
     audioClick();
 });
-
 function randomize(me){
     var temp = null;
     var i = 0;
@@ -121,11 +122,6 @@ function audioClick(){
         $('#bgm')[0].muted = false;
     });
 }
-function resetGif(){
-    $('#launch').attr('src', '');
-    $('#launch').attr('src', 'images/launch.gif');
-}
-
 function closeModal(){
     $('#winModal').modal('hide');
 }

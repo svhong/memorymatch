@@ -15,15 +15,8 @@ Flip 24 cards, find all 12 pairs, and don't let the Flux Capacitor down.
 - 🎵 **Theme music** you can mute
 - 📱 **Phone-friendly** layout
 
-<p align="center">
-  <img src="docs/screenshots/gameplay.png" alt="Mid-game with a card flipped" width="60%" />
-  <img src="docs/screenshots/mobile.png" alt="Mobile layout" width="30%" />
-</p>
-
 > "Great Scott!"
 > — Doc Brown
-
-![You win](docs/screenshots/win.png)
 
 > "Wait a minute, Doc. Are you telling me you built a time machine... out of a DeLorean?"
 > — Marty McFly

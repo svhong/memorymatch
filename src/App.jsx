@@ -25,7 +25,7 @@ function Game() {
         onReset={game.reset}
         onDemo={game.demoWin}
       />
-      {game.won && <WinModal onClose={game.reset} />}
+      {game.won && <WinModal muted={muted} onClose={game.reset} />}
     </>
   );
 }

@@ -73,8 +73,26 @@ body {
 .flipped {
   transform: rotateY(180deg);
 }
+/* Matched cards fade out, showing the matched image.
+   Do NOT animate opacity on .card itself: it is a preserve-3d element, and
+   opacity < 1 forces it flat, so the browser draws the (mirrored) back face
+   mid-fade. Fade the front face and the border separately, and hide the back
+   face outright instead of relying on backface-visibility while animating. */
 .matched {
+  animation: fadeBorder 1s forwards;
+}
+.matched .front {
   animation: fadeout 1s forwards;
+}
+.matched .back {
+  visibility: hidden;
+}
+
+@keyframes fadeBorder {
+  to {
+    border-color: transparent;
+    visibility: hidden;
+  }
 }
 
 @keyframes fadeout {
@@ -83,7 +101,6 @@ body {
   }
   to {
     opacity: 0;
-    visibility: hidden;
   }
 }
 

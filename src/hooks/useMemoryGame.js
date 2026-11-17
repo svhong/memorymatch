@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import {
   CARD_IMAGES,
   MATCH_DELAY_MS,
@@ -89,6 +89,10 @@ export function useMemoryGame() {
     return () => clearTimeout(timer);
   }, [won]);
 
+  const flipCard = useCallback((id) => dispatch({ type: "FLIP", id }), []);
+  const reset = useCallback(() => dispatch({ type: "RESET" }), []);
+  const demoWin = useCallback(() => dispatch({ type: "WIN" }), []);
+
   const accuracy =
     state.attempts === 0
       ? "0%"
@@ -101,8 +105,9 @@ export function useMemoryGame() {
     matches: state.matches,
     attempts: state.attempts,
     accuracy,
-    flipCard: (id) => dispatch({ type: "FLIP", id }),
-    reset: () => dispatch({ type: "RESET" }),
-    demoWin: () => dispatch({ type: "WIN" }),
+    totalPairs: cards.length / 2,
+    flipCard,
+    reset,
+    demoWin,
   };
 }

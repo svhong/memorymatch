@@ -1,11 +1,16 @@
 import { useEffect, useRef } from "react";
 
-export default function WinModal({ onClose }) {
+export default function WinModal({ muted, onClose }) {
   const videoRef = useRef(null);
 
+  // The win video has its own soundtrack, so it must honour the same mute
+  // setting as the background music. Set `muted` before calling play().
   useEffect(() => {
-    videoRef.current?.play().catch(() => {});
-  }, []);
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = muted;
+    video.play().catch(() => {});
+  }, [muted]);
 
   return (
     <div className="modal-backdrop">

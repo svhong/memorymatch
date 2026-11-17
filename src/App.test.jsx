@@ -136,6 +136,21 @@ describe("memory game", () => {
     expect(screen.getByLabelText("Mute music")).toBeTruthy();
   });
 
+  it("win video is muted when the mute button is on (#5)", () => {
+    render(<App />);
+    click(screen.getByLabelText("Mute music"));
+    click(screen.getByText("Demo"));
+    const video = document.querySelector("video");
+    expect(video).toBeTruthy();
+    expect(video.muted).toBe(true);
+  });
+
+  it("win video plays with sound when music is not muted", () => {
+    render(<App />);
+    click(screen.getByText("Demo"));
+    expect(document.querySelector("video").muted).toBe(false);
+  });
+
   it("shows the About page at #/about", () => {
     window.location.hash = "#/about";
     render(<App />);

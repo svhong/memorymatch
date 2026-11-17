@@ -9,7 +9,7 @@ const flipped = () => document.querySelectorAll(".card.flipped").length;
 const click = (card) => fireEvent.click(card);
 const wait = (ms) => act(() => vi.advanceTimersByTime(ms));
 const stat = (label) =>
-  screen.getByText(new RegExp(label)).textContent.replace(/\s+/g, " ");
+  screen.getByRole("group", { name: label }).textContent;
 
 // Find two cards with the same image / with different images.
 function pair(all) {
@@ -109,7 +109,7 @@ describe("memory game", () => {
 
   it("Demo shows the win modal and Close resets the game", () => {
     render(<App />);
-    click(screen.getByText("Demo"));
+    click(screen.getByText(/Demo/));
     expect(screen.getByText("YOU WIN!")).toBeTruthy();
     click(screen.getByText("Close"));
     expect(screen.queryByText("YOU WIN!")).toBeNull();
@@ -117,11 +117,11 @@ describe("memory game", () => {
     expect(stat("Games Played")).toContain("2");
   });
 
-  it("Reset Game mid-play clears stats and re-deals", () => {
+  it("New Game mid-play clears stats and re-deals", () => {
     render(<App />);
     const [a, b] = pair(cards());
     click(a); click(b); wait(700);
-    click(screen.getByText("Reset Game"));
+    click(screen.getByText(/New Game/));
     expect(cards()).toHaveLength(24);
     expect(flipped()).toBe(0);
     expect(stat("Total Matches")).toContain("0");

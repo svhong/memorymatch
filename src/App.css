@@ -40,6 +40,9 @@ body {
 }
 
 .card {
+  display: block;
+  padding: 0;
+  background: none;
   position: relative;
   min-width: 0;
   min-height: 0;
@@ -54,6 +57,8 @@ body {
 .front,
 .back {
   position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   backface-visibility: hidden;
@@ -82,45 +87,161 @@ body {
   }
 }
 
-/*--------------------------STATS BAR-----------------------*/
+/*--------------------------SIDEBAR MENU-----------------------*/
+:root {
+  --accent: #ff5a1f;
+  --panel: rgba(18, 18, 24, 0.72);
+  --panel-border: rgba(255, 255, 255, 0.12);
+  --text: #f4f1ea;
+  --muted: #a9a59c;
+}
+
 #statsArea {
   order: -1;
-  flex: 0 0 clamp(150px, 18vw, 240px);
-  padding: 12px 8px;
+  flex: 0 0 clamp(190px, 19vw, 280px);
+  margin: 12px 0 12px 12px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   overflow-y: auto;
   scrollbar-width: thin;
-  font-family: Georgia, Helvetica, Arial;
-  font-size: 1em;
-  color: orangered;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+}
+
+.brand {
+  text-align: center;
+}
+.brand img {
+  width: 100%;
+  max-height: 70px;
+  object-fit: contain;
+}
+.brand h1 {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.progress {
+  position: relative;
+  height: 22px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #ffb347);
+  transition: width 0.4s ease;
+}
+.progress-text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
 }
 .stat {
-  width: 100%;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 6px;
   text-align: center;
-  margin: 20px 0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
 }
-.games {
-  margin: 25px 0;
-  overflow: auto;
+.stat-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .btn {
-  display: block;
-  margin: 0 auto 20px;
-  padding: 6px 12px;
+  width: 100%;
+  padding: 10px 12px;
   border: 1px solid transparent;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 14px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
   cursor: pointer;
+  transition: transform 0.1s, background 0.15s, border-color 0.15s;
 }
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: none;
+}
+.btn:focus-visible,
+.card:focus-visible,
+.about-link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #ff7140;
+}
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--panel-border);
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+/* Used by the win modal's Close button. */
 .btn-danger {
   background: #d9534f;
-  border-color: #d43f3a;
+  color: #fff;
 }
-.btn-success {
-  background: #5cb85c;
-  border-color: #4cae4c;
+
+.about-link {
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
 }
+.about-link:hover {
+  color: var(--text);
+}
+
 /*----------------------------------------MODAL CSS---------------------------------------------*/
 
 .modal-backdrop {
@@ -163,17 +284,6 @@ body {
   width: 100%;
 }
 
-/*-------------------------------------AUDIO CONTROLS------------------------------------------*/
-
-.audioToggle {
-  display: block;
-  margin: 0 auto 20px;
-  background: none;
-  border: none;
-  font-size: 30px;
-  opacity: 0.6;
-  cursor: pointer;
-}
 /*-------------------------------------------------ANIMATIONS-------*/
 .animate {
   animation: modalflash;
@@ -349,28 +459,31 @@ body {
   }
 }
 
-/* Portrait / narrow screens: stats become a strip on top, board is 4 x 6. */
+/* Portrait / narrow screens: menu becomes a compact strip on top, board is 4 x 6. */
 @media (max-aspect-ratio: 1/1) {
   #root {
     flex-direction: column;
   }
   #statsArea {
     flex: 0 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 4px 16px;
-    padding: 8px;
+    margin: 8px 8px 0;
+    padding: 10px;
+    gap: 10px;
+    overflow: visible;
   }
-  .stat,
-  .games {
-    width: auto;
-    margin: 0;
+  .brand,
+  .about-link {
+    display: none;
   }
-  .btn,
-  .audioToggle {
-    margin: 0;
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .actions {
+    flex-direction: row;
+  }
+  .btn {
+    padding: 8px 4px;
+    font-size: 0.8rem;
   }
   #gameArea {
     grid-template-columns: repeat(4, 1fr);

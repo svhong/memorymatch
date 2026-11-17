@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { CARD_BACK } from "../cards";
 
-export default function Card({ card, onClick }) {
+function Card({ card, onClick }) {
   const className = [
     "card",
     card.flipped && "flipped",
@@ -10,9 +11,18 @@ export default function Card({ card, onClick }) {
     .join(" ");
 
   return (
-    <div className={className} onClick={() => onClick(card.id)}>
-      <img src={card.url} className="front" alt="" />
-      <img src={CARD_BACK} className="back" alt="" />
-    </div>
+    <button
+      type="button"
+      className={className}
+      onClick={() => onClick(card.id)}
+      disabled={card.matched}
+      aria-label={card.flipped ? "Face-up card" : "Face-down card"}
+    >
+      <img src={card.url} className="front" alt="" draggable={false} />
+      <img src={CARD_BACK} className="back" alt="" draggable={false} />
+    </button>
   );
 }
+
+// Only the cards whose state changed re-render when one is flipped.
+export default memo(Card);

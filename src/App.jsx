@@ -18,6 +18,7 @@ function Game() {
       <StatsPanel
         gamesPlayed={game.gamesPlayed}
         matches={game.matches}
+        totalPairs={game.totalPairs}
         attempts={game.attempts}
         accuracy={game.accuracy}
         muted={muted}

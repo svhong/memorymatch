@@ -1,0 +1,50 @@
+.about {
+  position: fixed;
+  inset: 0;
+  overflow: auto;
+  background: black;
+  font-family: Georgia, serif;
+}
+.about,
+.about a {
+  color: #ff3300;
+  text-shadow: 3px 3px 5px #109fd4;
+  text-decoration: none;
+}
+.about h1 {
+  text-align: center;
+  font-size: 3em;
+}
+.about .myPic {
+  height: 35vw;
+  width: 23%;
+  display: inline-block;
+}
+.about .myPic > img {
+  display: inline-block;
+  width: 100%;
+}
+.about .myPic > p {
+  text-align: center;
+}
+.about .gameDescription {
+  width: 48%;
+  display: inline-block;
+  position: absolute;
+  font-size: 2em;
+  margin-left: 1em;
+}
+.about .gameDescription > p {
+  margin-top: 0;
+}
+.about .skillsList {
+  display: inline-block;
+  position: absolute;
+  font-size: 2em;
+  top: 40%;
+  margin-left: 1em;
+}
+.about footer {
+  position: relative;
+  font-size: 3em;
+}

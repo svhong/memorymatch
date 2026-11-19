@@ -1,18 +1,18 @@
 export const CARD_BACK = "images/cardback.jpg";
 
 export const CARD_IMAGES = [
-  "images/biff.jpg",
-  "images/delorean.jpg",
-  "images/emmettbrown.jpg",
-  "images/fluxcapacitor.png",
-  "images/george.jpg",
-  "images/greatscott.jpg",
-  "images/lorraine.jpg",
-  "images/marty.jpg",
-  "images/timecircuit.jpg",
-  "images/delorean2.jpg",
-  "images/bttf2.jpg",
-  "images/bttf3.jpg",
+  "images/refresh/marty-guitar.webp",
+  "images/refresh/doc-clock.webp",
+  "images/refresh/frosted-delorean.webp",
+  "images/refresh/george-lorraine.webp",
+  "images/refresh/marty-goggles.webp",
+  "images/refresh/hoverboard.webp",
+  "images/refresh/future-doc-marty.webp",
+  "images/refresh/biff-tannen.webp",
+  "images/refresh/flying-delorean.webp",
+  "images/refresh/western-showdown.webp",
+  "images/refresh/time-train.webp",
+  "images/refresh/clara-clayton.webp",
 ];
 
 export const MATCH_DELAY_MS = 700;

@@ -8,7 +8,10 @@ body {
   margin: 0;
   height: 100vh;
   overflow: hidden;
-  background: url("/images/wallpaper.jpg") no-repeat center / cover;
+  background:
+    linear-gradient(rgba(7, 12, 24, 0.65), rgba(7, 12, 24, 0.82)),
+    url("/images/refresh/clock-tower-night.webp") no-repeat center / cover;
+  background-color: #070c18;
 }
 
 /* Stats column on the left, board fills the rest. */

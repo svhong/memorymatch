@@ -1,0 +1,201 @@
+{
+  "rights": "Back to the Future imagery belongs to Universal Studios and its respective rights holders. These official-site images are not represented as openly licensed; attribution is not a grant of permission. Fan project only; obtain permission before commercial redistribution.",
+  "processing": "Downloaded from the official movie galleries, cropped and encoded as local WebP files. No runtime third-party image requests.",
+  "assets": [
+    {
+      "path": "assets/refresh/marty-guitar.webp",
+      "description": "Marty McFly playing guitar at the school dance",
+      "film": 1,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture1",
+      "sourceImage": "https://static1.squarespace.com/static/5c62c09c4d546e27dc1016c7/64b90758b7191d7cd2b913a5/64b90758b7191d7cd2b913a8/1689758333659/2171_09545.jpg",
+      "cropCenter": [
+        0.5,
+        0.45
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/doc-clock.webp",
+      "description": "Doc Brown at the clock tower",
+      "film": 1,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture1",
+      "sourceImage": "https://static1.squarespace.com/static/5c62c09c4d546e27dc1016c7/64b90758b7191d7cd2b913a5/64b90758b7191d7cd2b913ca/1689758333727/2171_06995.jpg",
+      "cropCenter": [
+        0.5,
+        0.25
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/frosted-delorean.webp",
+      "description": "The frosted DeLorean after time travel",
+      "film": 1,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture1",
+      "sourceImage": "https://static1.squarespace.com/static/5c62c09c4d546e27dc1016c7/64b90758b7191d7cd2b913a5/64b90758b7191d7cd2b913aa/1689758334063/2171_03722.jpg",
+      "cropCenter": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/george-lorraine.webp",
+      "description": "George McFly and Lorraine Baines at the dance",
+      "film": 1,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture1",
+      "sourceImage": "https://static1.squarespace.com/static/5c62c09c4d546e27dc1016c7/64b92f6358bd0623e36c44a3/64b92f6458bd0623e36c453f/1689758330391/2171_09344.jpg",
+      "cropCenter": [
+        0.5,
+        0.4
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/marty-goggles.webp",
+      "description": "Marty McFly lifting goggles beside a red car",
+      "film": 1,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture1",
+      "sourceImage": "https://static1.squarespace.com/static/5c62c09c4d546e27dc1016c7/64b92f6358bd0623e36c44a3/64b92f6458bd0623e36c4528/1689758330204/2171-C-8700.jpg",
+      "cropCenter": [
+        0.4,
+        0.35
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/hoverboard.webp",
+      "description": "Marty McFly riding the hoverboard",
+      "film": 2,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture2",
+      "sourceImage": "https://static1.squarespace.com/static/5c62c09c4d546e27dc1016c7/64b93540e637932d36f81423/64b93540e637932d36f81436/1689758328208/2191_00151.jpg",
+      "cropCenter": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/future-doc-marty.webp",
+      "description": "Doc and Marty in their futuristic outfits",
+      "film": 2,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture2",
+      "sourceImage": "https://static1.squarespace.com/static/5c62c09c4d546e27dc1016c7/64b93540e637932d36f81423/64b93540e637932d36f81438/1689758328062/2191_00218.jpg",
+      "cropCenter": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/biff-tannen.webp",
+      "description": "Biff Tannen wearing his hat",
+      "film": 2,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture2",
+      "sourceImage": "https://static1.squarespace.com/static/5c62c09c4d546e27dc1016c7/64b93540e637932d36f81423/64b93540e637932d36f81428/1689758327955/2191-2-Z.jpg",
+      "cropCenter": [
+        0.5,
+        0.25
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/flying-delorean.webp",
+      "description": "Doc Brown leaning out of the hovering DeLorean",
+      "film": 2,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture2",
+      "sourceImage": "https://static1.squarespace.com/static/5c62c09c4d546e27dc1016c7/64b93540e637932d36f81423/64b93540e637932d36f8142e/1689758328027/2191_00221.JPG",
+      "cropCenter": [
+        0.55,
+        0.5
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/western-showdown.webp",
+      "description": "The Old West showdown in 1885",
+      "film": 3,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture3",
+      "sourceImage": "https://images.squarespace-cdn.com/content/v1/5c62c09c4d546e27dc1016c7/c4868015-6a29-4dcf-823d-6ae3dc88dadf/2196_00028.jpg",
+      "cropCenter": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/time-train.webp",
+      "description": "Time-machine instruments and illuminated gauges",
+      "film": 3,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture3",
+      "sourceImage": "https://static1.squarespace.com/static/5c62c09c4d546e27dc1016c7/64b9494538e660623fe2fc91/64b9494538e660623fe2fcd0/1689758332252/2196_00241.jpg",
+      "cropCenter": [
+        0.5,
+        0.5
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/clara-clayton.webp",
+      "description": "Clara Clayton in the Old West",
+      "film": 3,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture3",
+      "sourceImage": "https://static1.squarespace.com/static/5c62c09c4d546e27dc1016c7/64b947cdef421d269c06a985/64b947cdef421d269c06a99e/1710605499191/2196_00219.JPG",
+      "cropCenter": [
+        0.5,
+        0.3
+      ],
+      "size": [
+        640,
+        640
+      ]
+    },
+    {
+      "path": "assets/refresh/clock-tower-night.webp",
+      "description": "Doc Brown and Clara beside the clock at night",
+      "film": 3,
+      "sourcePage": "https://www.backtothefuture.com/movies/backtothefuture3",
+      "sourceImage": "https://images.squarespace-cdn.com/content/v1/5c62c09c4d546e27dc1016c7/1556986596403-7JDGAFKMAP66PZIRY23U/BTTF3_headerBanner.jpg",
+      "cropCenter": [
+        0.5,
+        0.35
+      ],
+      "size": [
+        1920,
+        1080
+      ]
+    }
+  ]
+}

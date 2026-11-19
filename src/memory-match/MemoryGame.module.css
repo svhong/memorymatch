@@ -14,7 +14,10 @@
   height: 100%;
   min-height: 28rem;
   container-type: size;
-  background: url("./assets/wallpaper.jpg") no-repeat center / cover;
+  background:
+    linear-gradient(rgba(7, 12, 24, 0.65), rgba(7, 12, 24, 0.82)),
+    url("./assets/refresh/clock-tower-night.webp") no-repeat center / cover;
+  background-color: #070c18;
 }
 .root,
 .root *,

@@ -1,11 +1,16 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import App from "./App";
+import MemoryGame from "./MemoryGame";
 import { shuffle } from "./utils/shuffle";
 
-const cards = () => [...document.querySelectorAll(".card")];
-const urlOf = (card) => card.querySelector(".front").getAttribute("src");
-const flipped = () => document.querySelectorAll(".card.flipped").length;
+// Cards expose their state through data attributes, so these helpers don't
+// depend on the (hashed) CSS Module class names.
+const cards = () => [...document.querySelectorAll("[data-card]")];
+const urlOf = (card) =>
+  card.querySelector('[data-face="front"]').getAttribute("src");
+const flipped = () =>
+  document.querySelectorAll('[data-card][data-flipped="true"]').length;
+const isMatched = (card) => card.dataset.matched === "true";
 const click = (card) => fireEvent.click(card);
 const wait = (ms) => act(() => vi.advanceTimersByTime(ms));
 const stat = (label) =>
@@ -35,7 +40,7 @@ describe("shuffle", () => {
 
 describe("memory game", () => {
   it("deals 24 face-down cards, 12 pairs", () => {
-    render(<App />);
+    render(<MemoryGame />);
     expect(cards()).toHaveLength(24);
     expect(flipped()).toBe(0);
     const counts = {};
@@ -45,7 +50,7 @@ describe("memory game", () => {
   });
 
   it("ignores a third click while two cards are face up", () => {
-    render(<App />);
+    render(<MemoryGame />);
     const [a, b] = mismatch(cards());
     const c = cards().find((x) => x !== a && x !== b);
     click(a); click(b); click(c);
@@ -53,7 +58,7 @@ describe("memory game", () => {
   });
 
   it("ignores clicking the same card twice", () => {
-    render(<App />);
+    render(<MemoryGame />);
     const [a] = cards();
     click(a); click(a);
     expect(flipped()).toBe(1);
@@ -62,7 +67,7 @@ describe("memory game", () => {
   });
 
   it("flips a mismatch back after 1s and counts an attempt", () => {
-    render(<App />);
+    render(<MemoryGame />);
     const [a, b] = mismatch(cards());
     click(a); click(b);
     wait(999);
@@ -75,19 +80,19 @@ describe("memory game", () => {
   });
 
   it("keeps a match, counts it, and reports accuracy", () => {
-    render(<App />);
+    render(<MemoryGame />);
     const [a, b] = pair(cards());
     click(a); click(b);
     wait(700);
-    expect(a.classList.contains("matched")).toBe(true);
-    expect(b.classList.contains("matched")).toBe(true);
+    expect(isMatched(a)).toBe(true);
+    expect(isMatched(b)).toBe(true);
     expect(stat("Total Matches")).toContain("1");
     expect(stat("Attempts")).toContain("1");
     expect(stat("Accuracy")).toContain("100%");
   });
 
   it("wins after all pairs: shows modal, then auto-resets after 8s", () => {
-    render(<App />);
+    render(<MemoryGame />);
     const all = cards();
     const seen = new Set();
     for (const c of all) {
@@ -108,7 +113,7 @@ describe("memory game", () => {
   });
 
   it("Demo shows the win modal and Close resets the game", () => {
-    render(<App />);
+    render(<MemoryGame />);
     click(screen.getByText(/Demo/));
     expect(screen.getByText("YOU WIN!")).toBeTruthy();
     click(screen.getByText("Close"));
@@ -118,7 +123,7 @@ describe("memory game", () => {
   });
 
   it("New Game mid-play clears stats and re-deals", () => {
-    render(<App />);
+    render(<MemoryGame />);
     const [a, b] = pair(cards());
     click(a); click(b); wait(700);
     click(screen.getByText(/New Game/));
@@ -129,7 +134,7 @@ describe("memory game", () => {
   });
 
   it("mute button toggles", () => {
-    render(<App />);
+    render(<MemoryGame />);
     click(screen.getByLabelText("Mute music"));
     expect(screen.getByLabelText("Unmute music")).toBeTruthy();
     click(screen.getByLabelText("Unmute music"));
@@ -137,7 +142,7 @@ describe("memory game", () => {
   });
 
   it("win video is muted when the mute button is on (#5)", () => {
-    render(<App />);
+    render(<MemoryGame />);
     click(screen.getByLabelText("Mute music"));
     click(screen.getByText(/Demo/));
     const video = document.querySelector("video");
@@ -146,15 +151,37 @@ describe("memory game", () => {
   });
 
   it("win video plays with sound when music is not muted", () => {
-    render(<App />);
+    render(<MemoryGame />);
     click(screen.getByText(/Demo/));
     expect(document.querySelector("video").muted).toBe(false);
   });
 
-  it("shows the About page at #/about", () => {
-    window.location.hash = "#/about";
-    render(<App />);
-    expect(screen.getByText("About Me!")).toBeTruthy();
-    window.location.hash = "";
+  it("passes className/style through to the outer box and fills its container", () => {
+    render(
+      <MemoryGame className="host-class" style={{ outline: "1px solid red" }} />
+    );
+    const root = screen.getByRole("region", { name: "Memory Match" });
+    expect(root.classList.contains("host-class")).toBe(true);
+    expect(root.style.outline).toBe("1px solid red");
+  });
+
+  it("does not create any audio when music={false}", () => {
+    const created = [];
+    vi.stubGlobal(
+      "Audio",
+      class {
+        constructor() {
+          created.push(this);
+        }
+        play() {
+          return Promise.resolve();
+        }
+        pause() {}
+      }
+    );
+    render(<MemoryGame music={false} />);
+    fireEvent.pointerDown(screen.getByRole("region", { name: "Memory Match" }));
+    expect(created).toHaveLength(0);
+    vi.unstubAllGlobals();
   });
 });

@@ -30,7 +30,40 @@ npm run build    # production build in dist/
 npm test         # run the test suite
 ```
 
-The About page lives at `#/about`.
+## Use it in another React app 🧩
+
+Everything the game needs lives in one folder, `src/memory-match/`. Copy it
+into your project and render it:
+
+```jsx
+import MemoryGame from "./memory-match";
+
+// The game fills whatever box it is placed in, so give that box a height.
+<div style={{ height: "80vh" }}>
+  <MemoryGame />
+</div>
+```
+
+| Prop | Default | |
+|---|---|---|
+| `className` | | extra class for the game's outer box |
+| `style` | | extra inline style for the outer box |
+| `music` | `true` | `false` turns background music off |
+
+Good to know:
+
+- **Needs** React (tested with 19) and a bundler that handles CSS Modules and asset imports
+  (Vite does). No other dependencies.
+- **Styles are scoped** (CSS Modules), so it won't clash with Tailwind,
+  Bootstrap or your own CSS, and it sets nothing on `body` or `:root`.
+- **Assets are imported**, not hard-coded, so it works at any route depth and
+  base path (e.g. `/games/memory-match`). They add about 6 MB, mostly the music,
+  the win video and the wallpaper.
+- **Layout adapts to its box**, not the window: wide boxes get the side menu,
+  tall ones get a menu strip on top.
+- **Music** starts on the player's first click *inside* the game (browsers block
+  autoplay), never from a click elsewhere on the page, and stops on unmount.
+- The win flash and modal stay inside the game box and never cover your nav.
 
 ## Artwork
 
@@ -44,13 +77,18 @@ cards, 1920 × 1080 for the background), with no runtime third-party image reque
 ![Artwork preview — all cards revealed for illustration only](docs/screenshots/artwork-preview.png)
 
 Full source pages, original image URLs, crop centers, and rights notes are in
-[`public/images/refresh/credits.json`](public/images/refresh/credits.json).
+[`src/memory-match/assets/refresh/credits.json`](src/memory-match/assets/refresh/credits.json).
 Attribution does not grant a license: the images remain copyrighted by their
 respective rights holders and are not represented as openly licensed.
 
 ## Built with
 
 React + Vite. Originally written in AngularJS + jQuery.
+
+```
+src/memory-match/   the game: copy this folder to reuse it
+src/main.jsx        tiny standalone shell used by `npm run dev`
+```
 
 ---
 

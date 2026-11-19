@@ -1,28 +1,41 @@
-*,
-*::before,
-*::after {
+/* The game fills whatever box it is placed in. Everything is scoped to this
+   module, so nothing here can leak into (or be broken by) the host page. */
+.root {
+  --accent: #ff5a1f;
+  --panel: rgba(18, 18, 24, 0.72);
+  --panel-border: rgba(255, 255, 255, 0.12);
+  --text: #f4f1ea;
+  --muted: #a9a59c;
+
+  position: relative;
+  isolation: isolate; /* keep our z-indexes from competing with the host page */
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-height: 28rem;
+  container-type: size;
+  background:
+    linear-gradient(rgba(7, 12, 24, 0.65), rgba(7, 12, 24, 0.82)),
+    url("./assets/refresh/clock-tower-night.webp") no-repeat center / cover;
+  background-color: #070c18;
+}
+.root,
+.root *,
+.root *::before,
+.root *::after {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  height: 100vh;
-  overflow: hidden;
-  background:
-    linear-gradient(rgba(7, 12, 24, 0.65), rgba(7, 12, 24, 0.82)),
-    url("/images/refresh/clock-tower-night.webp") no-repeat center / cover;
-  background-color: #070c18;
-}
-
-/* Stats column on the left, board fills the rest. */
-#root {
+/* Menu on the left, board fills the rest. */
+.layout {
   display: flex;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
-.theBlinder {
+.flash {
   pointer-events: none;
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: white;
   opacity: 0;
@@ -31,7 +44,7 @@ body {
 
 /* 6 columns x 4 rows = 24 cards. The grid stretches to fill the board area,
    so the cards always fit inside it and resize with the window. */
-#gameArea {
+.board {
   flex: 1;
   min-width: 0;
   min-height: 0;
@@ -107,16 +120,7 @@ body {
   }
 }
 
-/*--------------------------SIDEBAR MENU-----------------------*/
-:root {
-  --accent: #ff5a1f;
-  --panel: rgba(18, 18, 24, 0.72);
-  --panel-border: rgba(255, 255, 255, 0.12);
-  --text: #f4f1ea;
-  --muted: #a9a59c;
-}
-
-#statsArea {
+.menu {
   order: -1;
   flex: 0 0 clamp(190px, 19vw, 280px);
   margin: 12px 0 12px 12px;
@@ -159,12 +163,12 @@ body {
   background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
-.progress-fill {
+.progressFill {
   height: 100%;
   background: linear-gradient(90deg, var(--accent), #ffb347);
   transition: width 0.4s ease;
 }
-.progress-text {
+.progressText {
   position: absolute;
   inset: 0;
   display: grid;
@@ -174,7 +178,7 @@ body {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-.stats-grid {
+.statsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
@@ -189,13 +193,13 @@ body {
   border: 1px solid var(--panel-border);
   border-radius: 10px;
 }
-.stat-label {
+.statLabel {
   font-size: 0.62rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
 }
-.stat-value {
+.statValue {
   font-size: 1.5rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -226,46 +230,34 @@ body {
   transform: none;
 }
 .btn:focus-visible,
-.card:focus-visible,
-.about-link:focus-visible {
+.card:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 2px;
 }
-.btn-primary {
+.btnPrimary {
   background: var(--accent);
   color: #fff;
 }
-.btn-primary:hover {
+.btnPrimary:hover {
   background: #ff7140;
 }
-.btn-ghost {
+.btnGhost {
   background: rgba(255, 255, 255, 0.07);
   border-color: var(--panel-border);
 }
-.btn-ghost:hover {
+.btnGhost:hover {
   background: rgba(255, 255, 255, 0.14);
 }
 /* Used by the win modal's Close button. */
-.btn-danger {
+.btnDanger {
   background: #d9534f;
   color: #fff;
 }
 
-.about-link {
-  margin-top: auto;
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--muted);
-  text-decoration: none;
-}
-.about-link:hover {
-  color: var(--text);
-}
-
 /*----------------------------------------MODAL CSS---------------------------------------------*/
 
-.modal-backdrop {
-  position: fixed;
+.backdrop {
+  position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
@@ -274,9 +266,9 @@ body {
   z-index: 10;
 }
 
-.modal-content {
+.modal {
   width: 600px;
-  max-width: 90vw;
+  max-width: 90%;
   text-align: center;
   background: #333333;
   font-family: Georgia, Helvetica, Arial;
@@ -285,27 +277,27 @@ body {
   position: relative;
 }
 
-.modal-header,
-.modal-footer {
+.modalHeader,
+.modalFooter {
   border: none;
 }
 
-.modal-footer .btn {
+.modalFooter .btn {
   position: relative;
   right: 50%;
   transform: translate(50%);
 }
-.modal-header,
-.modal-footer {
+.modalHeader,
+.modalFooter {
   padding: 15px;
 }
-.modal-body > video,
-.modal-body > img {
+.modalBody > video,
+.modalBody > img {
   width: 100%;
 }
 
 /*-------------------------------------------------ANIMATIONS-------*/
-.animate {
+.modalFlash {
   animation: modalflash;
   animation-duration: 5.2s;
 }
@@ -479,23 +471,24 @@ body {
   }
 }
 
-/* Portrait / narrow screens: menu becomes a compact strip on top, board is 4 x 6. */
-@media (max-aspect-ratio: 1/1) {
-  #root {
+/* Portrait / narrow game box: menu becomes a compact strip on top, board is 4 x 6.
+   This is a *container* query, so it reacts to the size of the box the game is
+   placed in (e.g. a page under a nav bar), not to the browser window. */
+@container (max-aspect-ratio: 1/1) {
+  .layout {
     flex-direction: column;
   }
-  #statsArea {
+  .menu {
     flex: 0 0 auto;
     margin: 8px 8px 0;
     padding: 10px;
     gap: 10px;
     overflow: visible;
   }
-  .brand,
-  .about-link {
+  .brand {
     display: none;
   }
-  .stats-grid {
+  .statsGrid {
     grid-template-columns: repeat(4, 1fr);
   }
   .actions {
@@ -505,7 +498,7 @@ body {
     padding: 8px 4px;
     font-size: 0.8rem;
   }
-  #gameArea {
+  .board {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
   }
